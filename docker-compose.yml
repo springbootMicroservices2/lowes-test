@@ -28,6 +28,6 @@ services:
     volumes:
       - /data/myapp
     networks:
-      - "my-network
+      - "my-network"
   networks:
     my-network:
