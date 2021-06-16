@@ -19,7 +19,7 @@ jobs:
           java-package: jdk
           java-version: ${{ matrix.java }}
       - name: Compile the Project
-        working-directory: github-actions-java-maven
+        working-directory: lowes-test
         run: mvn -B pom.xml compile
   build:
     runs-on: ubuntu-20.04
@@ -40,10 +40,10 @@ jobs:
           java-version: '11'
           java-package: jdk
       - name: Build and test project
-        working-directory: github-actions-java-maven
+        working-directory: lowes-test
         run: mvn -B verify
       - name: Upload Maven build artifact
         uses: actions/upload-artifact@v2
         with:
           name: artifact.jar
-          path: github-actions-java-maven/target/github-actions-java-maven.jar
+          path: lowes-test/target/lowes-test.jar
