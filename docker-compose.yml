@@ -11,14 +11,23 @@ services:
       - MYSQL_PASSWORD=root
     ports:
       - 3306:3306
-
+    volumes:
+      - /data/mysql
+    networks:
+      - "my-network"
   myapp-main:
     build:
       context: .
       dockerfile: Dockerfile
-    image: lowes-url-shortener
+    image: lowes-urlshortener
     restart: on-failure
     depends_on:
       - mysql-local
     ports:
       - 8080:8080
+    volumes:
+      - /data/myapp
+    networks:
+      - "my-network
+  networks:
+    my-network:
