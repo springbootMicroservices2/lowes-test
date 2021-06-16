@@ -7,24 +7,6 @@ on:
     branches: [ master ]
 
 jobs:
-  compile:
-    runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        java: [ 11]
-    name: Java ${{ matrix.java }} compile
-    steps:
-      - name: Checkout Source Code
-        uses: actions/checkout@v2
-      - name: Setup Java
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-package: jdk
-          java-version: ${{ matrix.java }}
-      - name: Compile the Project
-        working-directory: lowes-test
-        run: mvn -B pom.xml compile
   build:
     runs-on: ubuntu-20.04
     needs: compile
