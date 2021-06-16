@@ -7,7 +7,7 @@ services:
     image: lowes-url-shortener
     restart: on-failure
     depends_on:
-      - mysql-local
+      - mysql_db
     ports:
       - 8080:8080
     links:
