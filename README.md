@@ -56,3 +56,5 @@ $ git clone https://github.com/springbootMicroservices2/lowes-test.git -b master
     - Build Spring project 
     - Open localhost:8080/swagger-ui.html to see endpoints.
 
+![image](https://user-images.githubusercontent.com/57837154/122361191-a5380500-cf74-11eb-93b3-9aeddf619ecb.png)
+
