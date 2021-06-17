@@ -29,7 +29,7 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
 
     private ApiInfo metadata(){
         return new ApiInfoBuilder()
-                .title("Url shortener API")
+                .title("Lowes Url shortener API")
                 .description("API reference for developers")
                 .version("1.0")
                 .build();
