@@ -12,6 +12,7 @@ import test.lowes.urlShortner.lowesurlShortner.model.vo.ShortenRequest;
 import test.lowes.urlShortner.lowesurlShortner.repository.URLRepository;
 import test.lowes.urlShortner.lowesurlShortner.util.BaseConverter;
 
+import java.net.MalformedURLException;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -31,7 +32,7 @@ class URLConverterServiceTest {
     URLConverterService urlService;
 
     @Test
-    public void convertToShortUrlTest() {
+    public void convertToShortUrlTest() throws MalformedURLException {
         var url = new Url();
         url.setLongUrl("https://github.com/AnteMarin/UrlShortener-API");
         url.setCreatedDate(new Date());
@@ -41,7 +42,7 @@ class URLConverterServiceTest {
         when(mockBaseConversion.encode(url.getId())).thenReturn("f");
 
         var urlRequest = new ShortenRequest();
-        urlRequest.setLongUrl("https://github.com/AnteMarin/UrlShortener-API");
+        urlRequest.setLongUrl("https://github.com");
 
         assertEquals("f", urlService.convertToShortUrl(urlRequest));
     }
@@ -51,12 +52,12 @@ class URLConverterServiceTest {
         when(mockBaseConversion.decode("h")).thenReturn((long) 7);
 
         var url = new Url();
-        url.setLongUrl("https://github.com/AnteMarin/UrlShortener-API");
+        url.setLongUrl("https://github.com");
         url.setCreatedDate(new Date());
         url.setId(7);
 
         when(mockUrlRepository.findById((long) 7)).thenReturn(java.util.Optional.of(url));
-        assertEquals("https://github.com/AnteMarin/UrlShortener-API", urlService.getOriginalUrl("h"));
+        assertEquals("https://github.com", urlService.getOriginalUrl("h"));
 
     }
 }

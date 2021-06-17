@@ -10,6 +10,8 @@ import test.lowes.urlShortner.lowesurlShortner.repository.URLRepository;
 import test.lowes.urlShortner.lowesurlShortner.util.BaseConverter;
 
 import javax.persistence.EntityNotFoundException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Date;
 
 @Service
@@ -23,8 +25,9 @@ public class URLConverterService {
         this.conversion = baseConversion;
     }
 
-    public String convertToShortUrl(ShortenRequest request) {
+    public String convertToShortUrl(ShortenRequest request) throws MalformedURLException {
         var url = new Url();
+        validate(request.getLongUrl());
         url.setLongUrl(request.getLongUrl());
         url.setExpiresDate(request.getExpiresDate());
         url.setCreatedDate(new Date());
@@ -44,6 +47,10 @@ public class URLConverterService {
         }
 
         return entity.getLongUrl();
+    }
+
+    private void validate(String stringURL) throws MalformedURLException {
+        new URL(stringURL);
     }
 
 }
