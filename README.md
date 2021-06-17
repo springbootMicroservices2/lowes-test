@@ -30,12 +30,18 @@ We have  UrlController.java file in the controller folder.
 The controller should have one POST method for creating short links and one GET method for redirecting to the original URL. 
 
 # How to use 
+
+Best Run in ubuntu machine 
+
+
+
 + With Docker and docker-compose: 
 
 ```sh
 $ git clone https://github.com/springbootMicroservices2/lowes-test.git -b master
-$ cd  lowes-urlShortner
-$ docker-compose up 
+$ cd  lowes-test
+$ docker-compose up --build -b
+$ docker-compose up
 ```
 
     - Open localhost:8080/swagger-ui.html to see endpoints. 
